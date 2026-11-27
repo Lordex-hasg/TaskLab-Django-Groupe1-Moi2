@@ -2,6 +2,12 @@
 {% block titre_page %}Liste des tâches — TaskLab{% endblock %}
 {% block contenu %}
 <h1>Gestion des tâches</h1>
+<p class="filtres">Filtrer :
+  <a href="{% url 'liste_taches' %}">Toutes</a> |
+  <a href="{% url 'liste_taches' %}?statut=A_FAIRE">À faire</a> |
+  <a href="{% url 'liste_taches' %}?statut=EN_COURS">En cours</a> |
+  <a href="{% url 'liste_taches' %}?statut=TERMINEE">Terminée</a>
+</p>
 <ul>{% for tache in taches %}
 <li><strong>{{ tache.titre }}</strong>
   <span class="badge statut-{{ tache.statut }}">{{ tache.get_statut_display }}</span>
